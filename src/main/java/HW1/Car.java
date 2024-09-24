@@ -1,4 +1,4 @@
-package Classes;
+package HW1;
 
 import jakarta.persistence.*;
 import lombok.Data;

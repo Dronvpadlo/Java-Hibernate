@@ -1,8 +1,5 @@
-package org.example;
+package HW1;
 
-import Classes.Car;
-import Classes.CarType;
-import Classes.Word;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -52,15 +49,15 @@ public class Main {
         session.save(new Car("Opel", CarType.SEDAN, 180, 2800, 2007));
         session.save(new Car("BMW", CarType.OFFROAD, 380, 9400, 2017));
 
-
-        List<Word> words = session.createNativeQuery("select * from Word", Word.class).list();
         System.out.println("_________Task1___________");
+        List<Word> words = session.createNativeQuery("select * from Word", Word.class).list();
         for (Word word : words) {
 
             System.out.println(word);
         }
-        List<Car> cars = session.createNativeQuery("select * from Car", Car.class).list();
         System.out.println("_________Task2___________");
+        List<Car> cars = session.createNativeQuery("select * from Car", Car.class).list();
+
         for (Car car : cars) {
             System.out.println(car);
         }
