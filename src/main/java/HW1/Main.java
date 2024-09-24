@@ -92,6 +92,8 @@ public class Main {
         List<Owner> owners = session.createNativeQuery("select * from Owner", Owner.class).list();
         owners.forEach(System.out::println);
         owners.forEach(owner -> System.out.println(owner.getDriveLicense()));
+        owners.forEach(owner -> System.out.println(owner.getCars()));
+        System.out.println("_________End_Program___________");
 
 
 

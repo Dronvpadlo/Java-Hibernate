@@ -36,6 +36,7 @@ public class Owner implements Serializable {
         this.cars = cars;
         this.driveLicense = driveLicense;
         driveLicense.setOwner(this);
+
     }
     public Owner(String name, DriveLicense driveLicense) {
         this.name = name;
