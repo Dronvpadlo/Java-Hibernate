@@ -8,6 +8,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -22,15 +24,22 @@ public class Owner implements Serializable {
 
     private String name;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<CarWithOwner> cars = new ArrayList<>();
+
     @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-    @JoinColumn(name = "driveLicense_id", referencedColumnName = "id")
+    @JoinColumn(name = "drive_license_id", referencedColumnName = "id")
     private DriveLicense driveLicense;
 
+    public Owner(String name, List<CarWithOwner> cars, DriveLicense driveLicense) {
+        this.name = name;
+        this.cars = cars;
+        this.driveLicense = driveLicense;
+        driveLicense.setOwner(this);
+    }
     public Owner(String name, DriveLicense driveLicense) {
         this.name = name;
         this.driveLicense = driveLicense;
         driveLicense.setOwner(this);
     }
-
-
 }

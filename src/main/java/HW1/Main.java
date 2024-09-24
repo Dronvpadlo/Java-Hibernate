@@ -17,7 +17,7 @@ public class Main {
                 .configure("hibernate.cfg.xml")
                 .build();
         Metadata metadata = new MetadataSources(serviceRegistry)
-                .addAnnotatedClasses(Word.class, Car.class, Owner.class, DriveLicense.class)
+                .addAnnotatedClasses(Word.class, Car.class, Owner.class, DriveLicense.class, CarWithOwner.class)
                 .getMetadataBuilder()
                 .build();
 
@@ -50,24 +50,28 @@ public class Main {
         session.persist(new Car("Opel", CarType.SEDAN, 180, 2800, 2007));
         session.persist(new Car("BMW", CarType.OFFROAD, 380, 9400, 2017));
 
+//____________________________________________________________________________
 
 
+        List<CarWithOwner> markCars = new ArrayList<>();
+        markCars.add(new CarWithOwner("BMW", CarType.OFFROAD, 380, 9400, 2017));
+        markCars.add(new CarWithOwner("Mazda", CarType.SPORT_CAR, 250, 3700, 2016));
 
+        List<CarWithOwner> elizabetCars = new ArrayList<>();
+        elizabetCars.add(new CarWithOwner("Dodge", CarType.OFFROAD, 320, 8000, 2011));
+        elizabetCars.add(new CarWithOwner("Toyota", CarType.SEDAN, 220, 3800, 2009));
 
+        List<CarWithOwner> arthurCars = new ArrayList<>();
+        arthurCars.add(new CarWithOwner("Acura", CarType.SEDAN, 180, 2700, 2017));
 
-        session.persist(new Owner("Mark", new DriveLicense("602880")));
-        session.persist(new Owner("Elizabet", new DriveLicense("327557")));
-        session.persist(new Owner("Arthur", new DriveLicense("336475")));
-        session.persist(new Owner("Liam", new DriveLicense("667209")));
+        List<CarWithOwner> liamCars = new ArrayList<>();
+        liamCars.add(new CarWithOwner("Opel", CarType.SEDAN, 180, 2800, 2007));
+        liamCars.add(new CarWithOwner("Honda", CarType.SPORT_CAR, 260, 4700, 2017));
 
-
-        //List<CarWithOwner> carWO1 = new ArrayList<>();
-        //carWO1.add(new CarWithOwner("Mazda", CarType.SEDAN, 220, 9400, 2017));
-        //carWO1.add(new CarWithOwner("Honda", CarType.SPORT_CAR, 370, 12600, 2007, mark));
-
-
-        //session.persist(carWO1);
-
+        session.persist(new Owner("Mark", markCars, new DriveLicense("602880")));
+        session.persist(new Owner("Elizabet", elizabetCars, new DriveLicense("327557")));
+        session.persist(new Owner("Arthur", arthurCars, new DriveLicense("336475")));
+        session.persist(new Owner("Liam", liamCars, new DriveLicense("667209")));
 
 
 
