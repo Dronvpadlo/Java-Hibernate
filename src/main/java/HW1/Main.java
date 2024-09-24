@@ -52,6 +52,9 @@ public class Main {
 
 
 
+
+
+
         session.persist(new Owner("Mark", new DriveLicense("602880")));
         session.persist(new Owner("Elizabet", new DriveLicense("327557")));
         session.persist(new Owner("Arthur", new DriveLicense("336475")));
