@@ -13,9 +13,7 @@ import java.io.Serializable;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class Word implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
