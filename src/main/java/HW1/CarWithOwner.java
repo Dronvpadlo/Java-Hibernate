@@ -3,13 +3,15 @@ package HW1;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
+
 @Entity
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @Table(name = "car_with_owner")
-public class CarWithOwner {
+public class CarWithOwner implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -19,7 +21,7 @@ public class CarWithOwner {
     private double power;
     private double price;
     private int year;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id", referencedColumnName = "id")
     private Owner owner;
 

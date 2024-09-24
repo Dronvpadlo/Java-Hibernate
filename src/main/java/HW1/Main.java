@@ -49,7 +49,7 @@ public class Main {
         session.persist(new Car("Volkswagen", CarType.UNIVERSAL, 150, 2400, 2004));
         session.persist(new Car("Opel", CarType.SEDAN, 180, 2800, 2007));
         session.persist(new Car("BMW", CarType.OFFROAD, 380, 9400, 2017));
-        
+
 
 
         session.persist(new Owner("Mark", new DriveLicense("602880")));
@@ -69,18 +69,22 @@ public class Main {
 
 
 
-        System.out.println("_________Task1___________");
+        System.out.println("_________Task1.1___________");
         List<Word> words = session.createNativeQuery("select * from Word", Word.class).list();
         for (Word word : words) {
 
             System.out.println(word);
         }
-        System.out.println("_________Task2___________");
+        System.out.println("_________Task1.2___________");
         List<Car> cars = session.createNativeQuery("select * from Car", Car.class).list();
 
         for (Car car : cars) {
             System.out.println(car);
         }
+        System.out.println("_________Task2___________");
+        List<Owner> owners = session.createNativeQuery("select * from Owner", Owner.class).list();
+        owners.forEach(System.out::println);
+        owners.forEach(owner -> System.out.println(owner.getDriveLicense()));
 
 
 
