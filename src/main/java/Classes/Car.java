@@ -1,9 +1,6 @@
 package Classes;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -13,7 +10,8 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String model;
-    // type
+    @Enumerated(EnumType.STRING)
+    private CarType carType;
     private double power;
     private double price;
     private int year;
@@ -22,8 +20,9 @@ public class Car {
 
     }
 
-    public Car(String model, double power, double price, int year) {
+    public Car(String model, CarType carType, double power, double price, int year) {
         this.model = model;
+        this.carType = carType;
         this.power = power;
         this.price = price;
         this.year = year;

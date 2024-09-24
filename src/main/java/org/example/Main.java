@@ -1,6 +1,7 @@
 package org.example;
 
 import Classes.Car;
+import Classes.CarType;
 import Classes.Word;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -32,31 +33,34 @@ public class Main {
         session
                 .beginTransaction();
 
-        Word sunset = new Word("Sunset");
-        Word heaven = new Word("Heaven");
-        Word river = new Word("River");
-        Word mountain = new Word("Mountain");
-        session.save(sunset);
-        session.save(heaven);
-        session.save(river);
-        session.save(mountain);
+        session.save(new Word("Real Madrid"));
+        session.save(new Word("Barcelona"));
+        session.save(new Word("Villarreal"));
+        session.save(new Word("Real Betis"));
+        session.save(new Word("Valencia"));
+        session.save(new Word("Granada"));
+        session.save(new Word("Osasuna"));
+        session.save(new Word("Selta Vigo"));
 
-        Car mazda = new Car("Mazda", 250, 2600, 2016);
-        Car dodge = new Car("Dodge", 320, 4000, 2011);
-        Car toyota = new Car("Toyota", 220, 1800, 2009);
-        Car honda = new Car("Honda", 260, 2700, 2017);
 
-        session.save(mazda);
-        session.save(dodge);
-        session.save(toyota);
-        session.save(honda);
+        session.save(new Car("Mazda", CarType.SPORT_CAR, 250, 3700, 2016));
+        session.save(new Car("Dodge", CarType.OFFROAD, 320, 8000, 2011));
+        session.save(new Car("Toyota", CarType.SEDAN, 220, 3800, 2009));
+        session.save(new Car("Honda", CarType.SPORT_CAR, 260, 4700, 2017));
+        session.save(new Car("Acura", CarType.SEDAN, 180, 2700, 2017));
+        session.save(new Car("Volkswagen", CarType.UNIVERSAL, 150, 2400, 2004));
+        session.save(new Car("Opel", CarType.SEDAN, 180, 2800, 2007));
+        session.save(new Car("BMW", CarType.OFFROAD, 380, 9400, 2017));
 
 
         List<Word> words = session.createNativeQuery("select * from Word", Word.class).list();
+        System.out.println("_________Task1___________");
         for (Word word : words) {
+
             System.out.println(word);
         }
         List<Car> cars = session.createNativeQuery("select * from Car", Car.class).list();
+        System.out.println("_________Task2___________");
         for (Car car : cars) {
             System.out.println(car);
         }

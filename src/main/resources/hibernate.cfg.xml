@@ -20,7 +20,7 @@
     Android714@
     </property>
     <property name="hibernate.hbm2ddl.auto">
-    create-drop
+    create
     </property>
     <property name="show_sql">
     true
