@@ -16,7 +16,7 @@ public class Main {
                 .configure("hibernate.cfg.xml")
                 .build();
         Metadata metadata = new MetadataSources(serviceRegistry)
-                .addAnnotatedClasses(Word.class, Car.class)
+                .addAnnotatedClass(Word.class)
                 .getMetadataBuilder()
                 .build();
 
@@ -30,8 +30,8 @@ public class Main {
         session
                 .beginTransaction();
 
-        Word vpadlo = new Word("Vpadlo");
-        session.save(vpadlo);
+        Word sunset = new Word("Sunset");
+        session.save(sunset);
 
 
         session
