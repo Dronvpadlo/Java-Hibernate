@@ -1,4 +1,4 @@
-package HW1;
+package HW1and2;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -91,8 +91,8 @@ public class Main {
         System.out.println("_________Task2___________");
         List<Owner> owners = session.createNativeQuery("select * from Owner", Owner.class).list();
         owners.forEach(System.out::println);
-        owners.forEach(owner -> System.out.println(owner.getDriveLicense()));
-        owners.forEach(owner -> System.out.println(owner.getCars()));
+        //owners.forEach(owner -> System.out.println(owner.getDriveLicense()));
+        //owners.forEach(owner -> System.out.println(owner.getCars()));
         System.out.println("_________End_Program___________");
 
 

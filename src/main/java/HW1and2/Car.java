@@ -1,4 +1,4 @@
-package HW1;
+package HW1and2;
 
 import jakarta.persistence.*;
 import lombok.Data;
